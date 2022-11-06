@@ -1,0 +1,26 @@
+<h4>public customers confirm</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h4>本当に退会しますか？</h4>
+
+      <p>退会すると、会員登録情報や</br>
+        これまでの購入歴が観覧できなくなります。</br>
+        退会する場合は、「退会する」をクリックしてください。</p>
+
+      <div class="form-group">
+        <%= link_to my_page_path , class: 'btn btn-primary' do %>
+        <span>退会しない</span>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= link_to public_customers_withdrow_path , method: :patch , class: 'btn btn-danger', "data-confirm" => "本当に退会しますか？" do %>
+        <span>退会する</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

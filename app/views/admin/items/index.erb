@@ -1,0 +1,44 @@
+<h4>admin items index</h4>
+
+<div class="container">
+  <div class="row">
+    <h3 class="page-name col-lg-2">商品一覧</h3>
+    <div class="col-lg-8"></div>
+    <div class="col-lg-1">
+      <a href="/admin/items/new" class="bottom"><i class="fas fa-plus-circle"></i></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-hover table-inverse col-md-12 px-auto">
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td>
+            <%= link_to admin_item_path(item.id) do %>
+            <span><%= item.name %></span>
+            <% end %>
+          </td>
+          <td><%= item.price %></td>
+          <td><%= item.genre.name %></td>
+          <td><%= item.is_active %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="paginate mx-auto">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<h4>public homes top</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-9">
+      <p>
+        ようこそ、ながのCAKEへ！</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の観覧はできますが、</br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3>新着商品</h3>
+  </div>
+
+  <div class="row">
+      <% @items.each do |item| %>
+        <div class="col-lg-3">
+          <%=link_to public_item_path(item) do %>
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+            <% end %>
+          <% end %>
+          <%= item.name %>
+          ¥<%= item.price %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-10">
+
+    </div>
+    <div class="col-lg-2">
+      <%= link_to '全ての商品を見る>', public_items_path %>
+    </div>
+  </div>
+
+</div>

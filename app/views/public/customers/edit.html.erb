@@ -1,0 +1,51 @@
+<h4>public customers edit</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 px-5 px-sm-0">
+      <h3 class="page-name"></h3>
+      <%= form_with model: @customer, url: public_customer_path(current_customer), method: :patch do |f| %>
+
+
+      <table>
+        <tr>
+          <th>氏名</th>
+          <td><%= f.text_field :first_name , class: 'form-control first_name' %></td>
+          <td><%= f.text_field :last_name , class: 'form-control last_name' %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= f.text_field :first_name_kana , class: 'form-control first_name_kana' %></td>
+          <td><%= f.text_field :last_name_kana , class: 'form-control last_name_kana' %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= f.text_field :postal_code , class: 'form-control postal_code' %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= f.text_field :address , class: 'form-control address' %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= f.text_field :telephone_number , class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= f.email_field :email , class: 'form-control email' %></td>
+        </tr>
+      </table>
+
+      <div class="form-group">
+        <%= f.submit'編集内容を保存' , class: 'btn btn-success' %>
+      </div>
+
+      <div class="form-group">
+        <%= link_to public_customers_confirm_path , class: 'btn btn-danger' do %>
+          <span>退会する</span>
+          <% end %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

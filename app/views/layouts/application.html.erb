@@ -10,7 +10,70 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <h3 class="logo">LOGO</h3>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+
+                <p>ようこそ、<%= current_customer.first_name %>さん！</p>
+                <li>
+                  <%= link_to "マイページ", my_page_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "商品一覧", public_items_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "カート", public_cart_items_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト",  destroy_customer_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li>
+                  <%= link_to "商品一覧", admin_items_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "会員一覧", admin_customers_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "注文履歴一覧", admin_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_admin_session_path , method: :delete, class: 'btn btn-outline-dark' %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "About", about_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "商品一覧", public_items_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li>
+                  <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-outline-dark' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer>
+
+    </footer>
   </body>
 </html>

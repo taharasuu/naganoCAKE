@@ -1,0 +1,27 @@
+<h4>public items show</h4>
+
+<div class="container">
+  <div class="row">
+    <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+    <div class="col-mx-5">
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+    </div>
+    <div class="col-mx-7">
+      <%= @item.name %>
+      <%= @item.introduction %>
+      <p>¥<%= @item.with_tax_price %>（税込）</p>
+
+    </div>
+    <div class="row">
+      <%= f.select :amount, *[1..10] %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.submit'カートに入れる' , class: "btn btn-success" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
