@@ -1,52 +1,72 @@
 <h4>public orders show</h4>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 px-5 px-sm-0">
-      <h3 class="page-name">注文履歴詳細</h3>
+    <h3 class="page-name">注文履歴詳細</h3>
+  </div>
 
+  <div class="row">
+    <div class="col-lg-6">
       <h4>注文情報</h4>
-        <table class="table table-hover table-inverse">
-          <tr><th class="tate-th">注文日</th><td><%= @order.created_at %></td></tr>
-          <tr><th class="tate-th">配達先</th><td><%= @order.address %></td></tr>
-          <tr><th class="tate-th">支払い方法</th><td><% if @order.payment_method = 0 %>
-                                      <p>クレジットカード</p>
-                                    <% else %>
-                                      <p>銀行振込</p>
-                                    <% end %></td></tr>
-          <tr><th class="tate-th">ステータス</th><td></td></tr>
-        </table>
-
-
-      <h4>請求情報</h4>
-        <table class="table table-hover table-inverse">
-          <tr><th class="tate-th">商品合計</th><td><%= @order.total_payment %></td></tr>
-          <tr><th class="tate-th">配送料</th><td><%= @order.shipping_cost %></td></tr>
-          <tr><th class="tate-th">ご請求額</th><td><%= @order.total_payment %></td></tr>
-        </table>
-
-
-      <h4>注文内容</h4>
-
-        <table class="table table-hover table-inverse">
-          <thead>
-            <tr>
-              <th>商品</th>
-              <th>単価(税込）</th>
-              <th>個数</th>
-              <th>小計</th>
-          　</tr>
-          </thead>
-          <tbody>
-          <% @order_details.each do |order_detail| %>
-            <tr>
-              <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.with_tax_price %></td>
-              <td><%= order_detail.amount %></td>
-              <td><%= order_detail.amount*order_detail.with_tax_price %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+      <table class="table table-hover table-inverse">
+        <tr>
+          <th class="tate-th">注文日</th>
+          <td><%= @order.created_at %></td>
+        </tr>
+        <tr>
+          <th class="tate-th">配達先</th>
+          <td><%= @order.address %></td>
+        </tr>
+        <tr>
+          <th class="tate-th">支払い方法</th>
+          <td><% if @order.payment_method = 0 %>
+                <p>クレジットカード</p>
+              <% else %>
+                <p>銀行振込</p>
+              <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th class="tate-th">ステータス</th>
+          <td></td>
+        </tr>
+      </table>
     </div>
+
+    <div class="col-lg-4">
+      <h4>請求情報</h4>
+      <table class="table table-hover table-inverse">
+        <tr><th class="tate-th">商品合計</th><td><%= @order.total_payment %></td></tr>
+        <tr><th class="tate-th">配送料</th><td><%= @order.shipping_cost %></td></tr>
+        <tr><th class="tate-th">ご請求額</th><td><%= @order.total_payment %></td></tr>
+      </table>
+    </div>
+
+    <div class="col-lg-2">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <h4>注文内容</h4>
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>単価(税込）</th>
+          <th>個数</th>
+          <th>小計</th>
+      　</tr>
+      </thead>
+      <tbody>
+      <% @order_details.each do |order_detail| %>
+        <tr>
+          <td><%= order_detail.item.name %></td>
+          <td><%= order_detail.with_tax_price %></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= order_detail.amount*order_detail.with_tax_price %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

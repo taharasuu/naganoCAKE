@@ -54,7 +54,7 @@ strong {
   padding: 80px;
 }
 
-.about-text, .sgin-text {
+.about-text, .sgin-text .taikai {
    text-align: center;
 }
 
@@ -83,3 +83,16 @@ strong {
   margin-bottom: 30px;
   margin-top: 30px;
 }
+
+.down {
+  padding-left: 20px;
+}
+
+.down-2 {
+  padding-left: 30px;
+}
+
+.confirm {
+  margin-top: 200px;
+}
+
